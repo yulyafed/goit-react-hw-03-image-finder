@@ -17,7 +17,6 @@ export const SearchBar = ({ onSubmit }) => {
           <Field
             class="input"
             type="text"
-            autocomplete="off"
             placeholder="Search images and photos"
             name="query"
           />
