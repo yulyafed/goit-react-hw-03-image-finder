@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 
-export const SearchBar = ({ onSubmit }) => {
+export const SearchBar = ({ onSubmit, isSubmitting }) => {
 
   const handleSubmit = (values, actions) => {
     onSubmit(values.query);
@@ -11,7 +11,7 @@ export const SearchBar = ({ onSubmit }) => {
     <header class="searchbar">
       <Formik initialValues={{ query: '' }} onSubmit={handleSubmit}>
         <Form class="form">
-          <button type="submit" class="button">
+          <button type="submit" class="button" disabled={isSubmitting}>
             <span class="button-label">Search</span>
           </button>
           <Field

@@ -10,25 +10,36 @@ export class App extends Component {
     page: 1,
     query: '',
     images: null,
+    isLoading: false,
   };
 
   searchImages = async (searchQuery) => {
-    const galleryImages = await Api.galleryCardsApi(searchQuery);
-    this.setState({
-      page: 1,
-      query: searchQuery,
-      images: galleryImages,
-    });
+    try {
+      this.setState({ isLoading: true });
+      const galleryImages = await Api.galleryCardsApi(searchQuery);
+      this.setState({
+        page: 1,
+        query: searchQuery,
+        images: galleryImages,
+        isLoading: false,
+      });     
+    }
+
+    catch (error){ 
+
+    }
+    
   }
 
   async loadMore() {}
 
   render() {
+    const { isLoading, images } = this.state;
     return (
       <>
-        <SearchBar onSubmit={this.searchImages} />
-        <Loader />
-        <ImageGalleryBox />
+        {isLoading && <Loader /> }  
+        <SearchBar onSubmit={this.searchImages} isSubmitting={ isLoading} />
+        <ImageGalleryBox items ={ images }/>
         <ButtonLoadMore />
       </>
     );

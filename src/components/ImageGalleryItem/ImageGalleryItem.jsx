@@ -1,9 +1,9 @@
-export const ImageGallery = () => { 
+export const ImageGallery = ({ item }) => { 
   return (
-<li class="gallery-item">
-  <img src="" alt="" />
-</li>
-  )
+    <li class="gallery-item" key={item.id}>
+      <img src={ item.webformatURL} alt="" />
+    </li>
+  );
 }
 
 
