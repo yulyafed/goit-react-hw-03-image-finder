@@ -1,19 +1,30 @@
-const URL = 'https://pixabay.com/api/?q=cat&page=1&key=your_key&image_type=photo&orientation=horizontal&per_page=12'
-const URL_KEY = '29840242-456192cfb7aa7dbb81a60ed73'
-export const App = () => {
+import axios from 'axios';
+import { Component } from 'react';
 
+export class App extends Component {
+
+  componentDidMount() { 
+    async function galleryCardsApi(name, page = 1) {
+      try {
+        const KEY = '29840242-456192cfb7aa7dbb81a60ed73';
+        const BASE_URL = 'https://pixabay.com/api/';
+        const per_page = 12;
+
+        const response = await axios.get(
+          `${BASE_URL}?key=${KEY}&q=${name}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${per_page}`
+        );
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+
+    }
+     
+  }
+  render() {
+    
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+    <>
+  </>);
+  }
+}
