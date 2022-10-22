@@ -1,30 +1,27 @@
-import axios from 'axios';
 import { Component } from 'react';
+import { SearchBar } from './Searchbar/Searchbar';
+import { ImageGalleryBox } from './ImageGallery/ImageGallery';
+import { ButtonLoadMore } from './Button/Button';
+import { Loader } from './Loader/Loader';
+import * as Api from 'services/Api';
 
+ 
 export class App extends Component {
+  state = {
+    images: [],
+  };
 
-  componentDidMount() { 
-    async function galleryCardsApi(name, page = 1) {
-      try {
-        const KEY = '29840242-456192cfb7aa7dbb81a60ed73';
-        const BASE_URL = 'https://pixabay.com/api/';
-        const per_page = 12;
+  galleryCardsApi(name, page = 1) { };
 
-        const response = await axios.get(
-          `${BASE_URL}?key=${KEY}&q=${name}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${per_page}`
-        );
-        return response.data;
-      } catch (error) {
-        console.error(error);
-      }
-
-    }
-     
-  }
   render() {
-    
-  return (
-    <>
-  </>);
+
+    return (
+      <>
+        <SearchBar onSubmit={ this.galleryCardsApi}/>
+        <Loader />
+        <ImageGalleryBox />
+        <ButtonLoadMore />
+      </>
+    );
   }
 }
