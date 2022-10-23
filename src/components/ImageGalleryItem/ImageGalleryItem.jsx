@@ -1,5 +1,6 @@
 import { Modal } from 'components/Modal/Modal';
 import { Component } from 'react';
+import { Item, Image } from './ImageGalleryItem.styled'
 
 export class ImageGalleryItem extends Component {
   state = {
@@ -25,10 +26,10 @@ export class ImageGalleryItem extends Component {
     const { isModalOpen } = this.state;
     return (
       <>
-        <li class="gallery-item">
-          <img src={item.webformatURL} alt="" onClick={this.openModal} />
+        <Item>
+          <Image src={item.webformatURL} alt="" onClick={this.openModal} />
           {isModalOpen && <Modal item={item} onClose={this.closeModal} />}
-        </li>
+        </Item>
       </>
     );
   }

@@ -1,5 +1,6 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik} from 'formik';
 import PropTypes from 'prop-types'; 
+import { HeaderForm, SearchForm, FormButton, Text, Input} from './Searchbar.styled';
 
 export const SearchBar = ({ onSubmit, isSubmitting, searchQuery }) => {
 
@@ -11,25 +12,24 @@ export const SearchBar = ({ onSubmit, isSubmitting, searchQuery }) => {
   const initialiValue = { query: searchQuery };
 
   return (
-    <header class="searchbar">
+    <HeaderForm>
       <Formik
         initialValues={initialiValue}
         onSubmit={handleSubmit}
         enableReinitialize
       >
-        <Form class="form">
-          <button type="submit" class="button" disabled={isSubmitting}>
-            <span class="button-label">Search</span>
-          </button>
-          <Field
-            class="input"
+        <SearchForm>
+          <FormButton type="submit" disabled={isSubmitting}>
+            <Text>Search</Text>
+          </FormButton>
+          <Input
             type="text"
             placeholder="Search images and photos"
             name="query"
           />
-        </Form>
+        </SearchForm>
       </Formik>
-    </header>
+    </HeaderForm>
   );
 };
 

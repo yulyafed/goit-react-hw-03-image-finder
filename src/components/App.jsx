@@ -4,6 +4,7 @@ import { ImageGalleryBox } from './ImageGallery/ImageGallery';
 import { ButtonLoadMore } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import * as Api from 'services/Api';
+import { Container } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -53,17 +54,17 @@ export class App extends Component {
     const { isLoading, images, query, error, loadMoreAllowed } = this.state;
 
     return (
-      <>
+      <Container>
         <Loader isLoading={isLoading} />
         <SearchBar
           onSubmit={this.searchImages}
           isSubmitting={isLoading}
           searchQuery={query}
         />
-        {error && <div>{error}</div>}
+        {error && <p>{error}</p>}
         {images.length > 0 && <ImageGalleryBox items={images} />}
         {loadMoreAllowed && <ButtonLoadMore onClick={this.loadMore} />}
-      </>
+      </Container>
     );
   }
 }
