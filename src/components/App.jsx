@@ -43,6 +43,7 @@ export class App extends Component {
 
   render() {
     const { isLoading, images, query } = this.state;
+    
     return (
       <>
         <Loader isLoading={isLoading} />

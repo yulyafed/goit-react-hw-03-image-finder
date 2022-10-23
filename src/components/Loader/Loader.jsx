@@ -6,7 +6,7 @@ export const Loader = ({ isLoading }) => {
     <BeatLoader
       color="green"
       loading={isLoading}
-      size={80}
+      size={60}
       aria-label="Loading Spinner"
     />
   );

@@ -2,17 +2,18 @@ import { Formik, Form, Field } from 'formik';
 import PropTypes from 'prop-types'; 
 
 export const SearchBar = ({ onSubmit, isSubmitting, searchQuery }) => {
+
   const handleSubmit = (values, actions) => {
     onSubmit(values.query);
     actions.resetForm();
   };
 
-  const initialiaValues = { query: searchQuery };
+  const initialiValue = { query: searchQuery };
 
   return (
     <header class="searchbar">
       <Formik
-        initialValues={initialiaValues}
+        initialValues={initialiValue}
         onSubmit={handleSubmit}
         enableReinitialize
       >
