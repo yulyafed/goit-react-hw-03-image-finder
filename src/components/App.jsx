@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Component } from 'react';
 import { SearchBar } from './Searchbar/Searchbar';
 import { ImageGalleryBox } from './ImageGallery/ImageGallery';
@@ -35,7 +34,7 @@ export class App extends Component {
     const { isLoading, images } = this.state;
     return (
       <>
-        {isLoading && <Loader />}
+        <Loader isLoading={ isLoading }/>
         <SearchBar onSubmit={this.searchImages} isSubmitting={isLoading} />
         <ImageGalleryBox items={images} />
         <ButtonLoadMore onClick={this.loadMore} />

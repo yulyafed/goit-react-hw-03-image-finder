@@ -3,7 +3,7 @@ import { ImageGallery } from "components/ImageGalleryItem/ImageGalleryItem";
 export const ImageGalleryBox = ({ items }) => { 
   return (
     <ul class="gallery">
-      {items.map(item => (
+      {items.map((item) => (
         <ImageGallery item={ item } />
       ))}
       
