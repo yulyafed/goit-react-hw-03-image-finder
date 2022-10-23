@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { ImageGallery } from 'components/ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryItem} from 'components/ImageGalleryItem/ImageGalleryItem';
 
 export const ImageGalleryBox = ({ items }) => {
   return (
     <>
       <ul class="gallery">
         {items.map(item => (
-          <ImageGallery item={item} key={item.id} />
+          <ImageGalleryItem item={item} key={item.id} />
         ))}
       </ul>
     </>
@@ -16,7 +16,7 @@ export const ImageGalleryBox = ({ items }) => {
 ImageGalleryBox.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     })
   ).isRequired,
 };
