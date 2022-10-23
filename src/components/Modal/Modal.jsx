@@ -1,10 +1,10 @@
 // import PropTypes from 'prop-types';
 
-export const Modal = () => {
+export const Modal = ({ item, onClose }) => {
   return (
-    <div class="overlay">
+    <div class="overlay" onClick={ onClose }>
       <div class="modal">
-        <img src="" alt="" />
+        <img src={item.largeImageURL} alt="" />
       </div>
     </div>
   );
