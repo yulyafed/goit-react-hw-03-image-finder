@@ -1,5 +1,5 @@
-export const ButtonLoadMore = () => { 
+export const ButtonLoadMore = ({ onClick }) => { 
     return (
-        <button type="button">Load more</button>
+        <button type="button" onClick = { onClick }>Load more</button>
     )
 }
