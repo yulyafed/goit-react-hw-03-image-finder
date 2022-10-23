@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import BeatLoader from 'react-spinners/ClipLoader';
 
-export const Loader = ({ isLoading}) => {
+export const Loader = ({ isLoading }) => {
   return (
     <BeatLoader
       color="green"
@@ -9,4 +10,8 @@ export const Loader = ({ isLoading}) => {
       aria-label="Loading Spinner"
     />
   );
+};
+
+Loader.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
 };

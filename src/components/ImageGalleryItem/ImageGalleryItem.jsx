@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Modal } from 'components/Modal/Modal';
 
 export const ImageGallery = ({ item }) => {
@@ -7,4 +8,8 @@ export const ImageGallery = ({ item }) => {
       <Modal />
     </li>
   );
+};
+
+ImageGallery.propTypes = {
+  webformatURL: PropTypes.string.isRequired,
 };
