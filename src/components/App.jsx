@@ -11,8 +11,9 @@ export class App extends Component {
     query: '',
     images: [],
     isLoading: false,
+    loadMoreAllowed: false,
     error: null,
-  }; 
+  };
 
   searchImages = async searchQuery => {
     try {
@@ -22,12 +23,13 @@ export class App extends Component {
         page: 1,
         query: searchQuery,
         images: galleryImages.hits,
+        loadMoreAllowed: galleryImages.hits.length > 0,
         isLoading: false,
       });
     } catch (error) {
       this.setState({
-        error: 'No images found'
-      })
+        error: 'No images found',
+      });
     }
   };
 
@@ -41,14 +43,15 @@ export class App extends Component {
       this.setState(state => ({
         page: state.page + 1,
         images: [...state.images, ...galleryImages.hits],
+        loadMoreAllowed: galleryImages.hits.length > 0,
         isLoading: false,
       }));
     } catch (error) {}
   };
 
   render() {
-    const { isLoading, images, query, error} = this.state;
-    
+    const { isLoading, images, query, error, loadMoreAllowed } = this.state;
+
     return (
       <>
         <Loader isLoading={isLoading} />
@@ -57,9 +60,9 @@ export class App extends Component {
           isSubmitting={isLoading}
           searchQuery={query}
         />
-        {error && <div>{ error }</div>}
+        {error && <div>{error}</div>}
         {images.length > 0 && <ImageGalleryBox items={images} />}
-        {query !== '' && <ButtonLoadMore onClick={this.loadMore} />}
+        {loadMoreAllowed && <ButtonLoadMore onClick={this.loadMore} />}
       </>
     );
   }
