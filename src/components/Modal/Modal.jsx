@@ -1,5 +1,3 @@
-// import PropTypes from 'prop-types';
-
 export const Modal = ({ item, onClose }) => {
   return (
     <div class="overlay" onClick={ onClose }>

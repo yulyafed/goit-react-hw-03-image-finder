@@ -6,8 +6,19 @@ export class ImageGalleryItem extends Component {
     isModalOpen: false,
   };
 
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyPress);
+  }
+
   openModal = () => this.setState({ isModalOpen: true });
   closeModal = () => this.setState({ isModalOpen: false });
+
+  handleKeyPress = e => {
+    if (e.code !== 'Escape') {
+      return;
+    }
+    this.closeModal();
+  };
 
   render() {
     const { item } = this.props;
@@ -16,7 +27,7 @@ export class ImageGalleryItem extends Component {
       <>
         <li class="gallery-item">
           <img src={item.webformatURL} alt="" onClick={this.openModal} />
-          {isModalOpen && <Modal item={item} onClose={ this.closeModal}/>}
+          {isModalOpen && <Modal item={item} onClose={this.closeModal} />}
         </li>
       </>
     );
