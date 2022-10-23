@@ -47,7 +47,7 @@ export class App extends Component {
   };
 
   render() {
-    const { isLoading, images, query } = this.state;
+    const { isLoading, images, query, error} = this.state;
     
     return (
       <>
@@ -57,6 +57,7 @@ export class App extends Component {
           isSubmitting={isLoading}
           searchQuery={query}
         />
+        {error && <div>{ error }</div>}
         {images.length > 0 && <ImageGalleryBox items={images} />}
         {query !== '' && <ButtonLoadMore onClick={this.loadMore} />}
       </>
