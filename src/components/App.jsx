@@ -20,24 +20,39 @@ export class App extends Component {
       this.setState({
         page: 1,
         query: searchQuery,
-        images: galleryImages,
+        images: galleryImages.hits,
         isLoading: false,
       });
     } catch (error) {}
   };
 
-  loadMore = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
+  loadMore = async () => {
+    try {
+      this.setState({ isLoading: true });
+      const galleryImages = await Api.galleryCardsApi(
+        this.state.query,
+        this.state.page + 1
+      );
+      this.setState(state => ({
+        page: state.page + 1,
+        images: [...state.images, ...galleryImages.hits],
+        isLoading: false,
+      }));
+    } catch (error) {}
   };
 
   render() {
-    const { isLoading, images } = this.state;
+    const { isLoading, images, query } = this.state;
     return (
       <>
-        <Loader isLoading={ isLoading }/>
-        <SearchBar onSubmit={this.searchImages} isSubmitting={isLoading} />
-        <ImageGalleryBox items={images} />
-        <ButtonLoadMore onClick={this.loadMore} />
+        <Loader isLoading={isLoading} />
+        <SearchBar
+          onSubmit={this.searchImages}
+          isSubmitting={isLoading}
+          searchQuery={query}
+        />
+        {images.length > 0 && <ImageGalleryBox items={images} />}
+        {query !== '' && <ButtonLoadMore onClick={this.loadMore} />}
       </>
     );
   }
