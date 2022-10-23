@@ -11,7 +11,8 @@ export class App extends Component {
     query: '',
     images: [],
     isLoading: false,
-  };
+    error: null,
+  }; 
 
   searchImages = async searchQuery => {
     try {
@@ -23,7 +24,11 @@ export class App extends Component {
         images: galleryImages.hits,
         isLoading: false,
       });
-    } catch (error) {}
+    } catch (error) {
+      this.setState({
+        error: 'No images found'
+      })
+    }
   };
 
   loadMore = async () => {
