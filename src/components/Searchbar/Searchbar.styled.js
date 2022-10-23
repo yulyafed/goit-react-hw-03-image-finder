@@ -2,7 +2,7 @@ import { Form, Field } from 'formik';
 import styled from 'styled-components';
 
 export const HeaderForm = styled.header`
-top: 0;
+  top: 0;
   left: 0;
   position: sticky;
   z-index: 1100;
@@ -31,14 +31,14 @@ overflow: hidden;
 `;
  
 export const FormButton = styled.button`
-    display: inline - block;
+    display: inline-block;
     width: 48px;
     height: 48px;
     border: 0;
-    background - image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
-    background - size: 40 %;
-    background - repeat: no - repeat;
-    background - position: center;
+    background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+    background-size: 40 %;
+    background-repeat: no-repeat;
+    background-position: center;
     opacity: 0.6;
     transition: opacity 250ms cubic - bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -55,23 +55,23 @@ export const Text = styled.span`
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white - space: nowrap;
-    clip - path: inset(50 %);
+    white-space: nowrap;
+    clip-path: inset(50 %);
     border: 0;
 `;
 
 export const Input = styled(Field)`
-    display: inline - block;
+    display: inline-block;
     width: 100 %;
     font: inherit;
-    font - size: 20px;
+    font-size: 20px;
     border: none;
     outline: none;
-    padding - left: 4px;
-    padding - right: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
     &::placeholder {
     font: inherit;
-    font - size: 18px;
+    font-size: 18px;
 `;
    
 
