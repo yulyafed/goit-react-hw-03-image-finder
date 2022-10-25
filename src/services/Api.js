@@ -9,6 +9,6 @@ export const galleryCardsApi = async (name, page = 1) => {
     const response = await axios.get(
         `${BASE_URL}?key=${KEY}&q=${name}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${per_page}`)
     return response.data;
-
+   
 }
 

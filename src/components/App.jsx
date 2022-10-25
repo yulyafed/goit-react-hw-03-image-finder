@@ -63,7 +63,7 @@ export class App extends Component {
         />
         {error && <p>{error}</p>}
         {images.length > 0 && <ImageGalleryBox items={images} />}
-        {loadMoreAllowed && <ButtonLoadMore onClick={this.loadMore} />}
+        {loadMoreAllowed && <ButtonLoadMore onClick={this.loadMore}/>}
       </Container>
     );
   }
