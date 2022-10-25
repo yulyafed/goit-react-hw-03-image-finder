@@ -16,15 +16,17 @@ export class App extends Component {
     error: null,
   };
 
+  itemsPerPage = 12;
+
   searchImages = async searchQuery => {
     try {
       this.setState({ isLoading: true });
-      const galleryImages = await Api.galleryCardsApi(searchQuery);
+      const galleryImages = await Api.galleryCardsApi(searchQuery, 1, this.itemsPerPage);
       this.setState({
         page: 1,
         query: searchQuery,
         images: galleryImages.hits,
-        loadMoreAllowed: galleryImages.hits.length > 0,
+        loadMoreAllowed: galleryImages.hits.length < galleryImages.totalHits,
         isLoading: false,
       });
     } catch (error) {
@@ -39,12 +41,13 @@ export class App extends Component {
       this.setState({ isLoading: true });
       const galleryImages = await Api.galleryCardsApi(
         this.state.query,
-        this.state.page + 1
+        this.state.page + 1,
+        this.itemsPerPage
       );
       this.setState(state => ({
         page: state.page + 1,
         images: [...state.images, ...galleryImages.hits],
-        loadMoreAllowed: galleryImages.hits.length > 0,
+        loadMoreAllowed: (state.page * this.itemsPerPage) + galleryImages.hits.length < galleryImages.totalHits,
         isLoading: false,
       }));
     } catch (error) {}
